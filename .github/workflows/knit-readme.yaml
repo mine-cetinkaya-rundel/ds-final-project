@@ -6,7 +6,7 @@ on:
     - 'README.Rmd'
 name: Check README renders
 jobs:
-  knit:
+  knit-readme:
     runs-on: ubuntu-latest
     steps:
     - name: Checkout
