@@ -8,6 +8,8 @@ name: Check README renders
 jobs:
   knit-readme:
     runs-on: ubuntu-latest
+    env:
+      GITHUB_PAT: ${{ secrets.GITHUB_TOKEN }}
     steps:
     - name: Checkout
       uses: actions/checkout@main
