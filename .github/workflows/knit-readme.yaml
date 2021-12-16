@@ -11,13 +11,15 @@ jobs:
     steps:
     - name: Checkout
       uses: actions/checkout@main
+    - name: Set up pandoc
+      uses: r-lib/actions/setup-pandoc@v2
+    - name: Set up R
+      uses: r-lib/actions/setup-r@v2
     - name: Install Missing Packages
       run: |
         install.packages("remotes")
         remotes::install_github("rundel/checklist")
-        missing = checklist::missing_pkgs(dir = "./", glob = "README.Rmd")
-        if (length(missing) > 0)
-          install.packages(pkgs = missing)
+        checklist::install_missing_pkgs(dir = "./", glob = "README.Rmd")
       shell: Rscript {0}
     - name: Check Renders
       run: |
