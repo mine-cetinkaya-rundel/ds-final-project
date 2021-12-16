@@ -13,6 +13,7 @@ jobs:
       uses: actions/checkout@main
     - name: Install Missing Packages
       run: |
+        install.packages("rundel/checklist")
         missing = checklist::missing_pkgs(dir = "./", glob = "README.Rmd")
         if (length(missing) > 0)
           install.packages(pkgs = missing)
