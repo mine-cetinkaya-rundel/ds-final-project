@@ -1,0 +1,21 @@
+---
+title: "Project proposal"
+author: "Team name"
+output: github_document
+---
+
+```{r load-packages, message = FALSE}
+library(tidyverse)
+```
+
+## 1. Introduction
+
+
+
+## 2. Data
+
+
+
+## 3. Data analysis plan
+
+
