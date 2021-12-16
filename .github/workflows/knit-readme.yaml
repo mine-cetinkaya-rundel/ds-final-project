@@ -1,0 +1,23 @@
+on:
+  push:
+    branches:
+    - main
+    paths:
+    - 'README.Rmd'
+name: Check README renders
+jobs:
+  knit:
+    runs-on: ubuntu-latest
+    steps:
+    - name: Checkout
+      uses: actions/checkout@main
+    - name: Install Missing Packages
+      run: |
+        missing = checklist::missing_pkgs(dir = "./", glob = "README.Rmd")
+        if (length(missing) > 0)
+          install.packages(pkgs = missing)
+      shell: Rscript {0}
+    - name: Check Renders
+      run: |
+        checklist::check_rmd_renders("README.Rmd")
+      shell: Rscript {0}
